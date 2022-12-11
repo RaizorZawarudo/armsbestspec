@@ -1,0 +1,7 @@
+{
+  "load": [
+      "/bishoparms.lua",
+      "/warrior/arms.lua",
+      "/warrior/spells/arms.lua"
+  ]
+}
