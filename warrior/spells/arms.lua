@@ -1,5 +1,5 @@
-local Unlocker, awful, example = ...
-local arms = example.warrior.arms
+local Unlocker, awful, bishoparms = ...
+local arms = bishoparms.warrior.arms
 
 local NS = awful.Spell
 local player = awful.player
