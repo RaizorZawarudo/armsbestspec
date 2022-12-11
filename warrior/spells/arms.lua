@@ -11,18 +11,21 @@ awful.Populate({
     hamstring = NS(1715, {damage = "physical"} ),
     
     -- ATTACKS
-    bloodthirst = NS(23881, { damage = "physical" }),
-    rampage = NS(184367, { damage = "physical" }),
-    whirlwind = NS(190411, { damage = "physical" }),
+    mortalStrike = NS(12294, { damage = "physical" }),
+    overpower = NS(7384, { damage = "physical" }),
+    rend = NS(772, { damage = "physical", bleed = true }),
     slam = NS(1464, { damage = "physical" }),
     execute = NS(5308, { damage = "physical" }),
     impendingVictory = NS(202168, { damage = "physical" }),
-    onslaught = NS(315720, {damage = "physical" }),
 
     --DAMAGE COOLIES
-    odynsFury = NS(385059),
+    colossussSmash = NS(262161, { damage = "physical"}),
     avatar = NS(107574),
-    recklessness = NS(1719),
+    sweepingStrikes = NS(260708),
+    sharpenBlade = NS(198817),
+
+    --DEFENSIVES 
+    dieByTheSword = NS(118039),
 }, arms, getfenv(1))
 -- ^^^ make sure you replace "arms" here with your specialization's routine actor!
 
@@ -34,16 +37,15 @@ hamstring:Callback(function (spell)
     
 end)
 
-bloodthirst:Callback(function (spell)
+mortalStrike:Callback(function (spell)
     if not spell:Castable() then return end
     if target.meleeRangeOf(player) then
         return spell:Cast(target, {face = true})
     end  
 end)
 
-bloodthirst:Callback("heal", function(spell)
-    if not spell:Castable() then return end
-    if player.hp > 35 then return end
+mortalStrike:Callback("proc Battlelord", function(spell)
+    if not player.buff("Battlelord") then return end
     if target.meleeRangeOf(player) then
         return spell:Cast(target, {face = true})
     end 

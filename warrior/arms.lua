@@ -12,19 +12,17 @@ arms:Init(function()
         -- spells we created in the spell book are magically available in our actor!
         hamstring()
         --coolies
-        odynsFury()
 
         -- heal
         impendingVictory("halfHpNotCCd")
-        bloodthirst("heal")
 
         --attacks
+        --overpower
         execute("proc")
-        whirlwind("cleave")
-        rampage()
+        mortalStrike("proc Battlelord")
+        mortalStrike()
+        -- whirlwind("cleave")
         execute()
-        onslaught()
-        bloodthirst()
         slam()
     end
 end)
