@@ -51,13 +51,6 @@ mortalStrike:Callback("proc Battlelord", function(spell)
     end 
 end)
 
-rampage:Callback(function(spell)
-    if player.Rage > 80 and target.meleeRangeOf(player) then
-        if spell:Cast(target, {face = true}) then
-            awful.alert("Rampage", spell.id)
-        end
-    end
-end)
 
 whirlwind:Callback("cleave", function(spell)
     if not player.hasTalent("Improved Whirlwind") then return end
@@ -96,31 +89,9 @@ impendingVictory:Callback("halfHpNotCCd", function (spell)
     end    
 end)
 
-onslaught:Callback(function (spell)
-    if not player.hasTalent("Onslaught") then return end
-    if not spell:Castable() then return end
-    if target.meleeRangeOf(player) then
-        return spell:Cast()
-    end    
-end)
-
 slam:Callback(function (spell)
     if not spell:Castable() then return end
     if target.meleeRangeOf(player) then
         return spell:Cast()
-    end    
-end)
-
-odynsFury:Callback(function (spell)
-    if not player.hasTalent("Odyn's Fury") or not spell:Castable() then return end
-    if player.hasTalent("Avatar") and not player.hasTalent(390135) and player.buffRemains("Avatar") > 15 then
-        if spell:Cast() then
-            awful.alert("Odyn's Fury", spell.id)
-        end
-    end
-    if player.buffRemains("Recklessness") > 8 then
-        if spell:Cast() then
-            awful.alert("Odyn's Fury", spell.id)
-        end
     end    
 end)
